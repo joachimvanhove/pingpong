@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelerbeheer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Spelerbeheer</h1>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Naam speler" required>
+            <button class="btn" type="submit">Toevoegen</button>
+        </form>
+        <ul>
+            {% for player in players %}
+            <li>{{ player['name'] }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn">Terug naar Dashboard</a>
+    </div>
+</body>
+</html>

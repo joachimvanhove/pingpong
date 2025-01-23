@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speler Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body class="iphone-page {{ 'active' if server }}">
+    <h1>{{ player }}</h1>
+    <div class="score">{{ player_score }}</div>
+    <div class="opponent">{{ opponent }}: {{ opponent_score }}</div>
+    <form method="POST">
+        <button type="submit" class="btn btn-large">+1 Punt</button>
+    </form>
+    <script>
+        const socket = io.connect();
+
+        // Luister naar score-updates
+        socket.on('update_score', (data) => {
+            if (data.player1 === "{{ player }}") {
+                document.querySelector('.score').innerText = data.score1;
+            } else if (data.player2 === "{{ player }}") {
+                document.querySelector('.score').innerText = data.score2;
+            }
+
+            // Update tegenstander
+            if (data.player1 === "{{ opponent }}") {
+                document.querySelector('.opponent').innerText = `${data.player1}: ${data.score1}`;
+            } else if (data.player2 === "{{ opponent }}") {
+                document.querySelector('.opponent').innerText = `${data.player2}: ${data.score2}`;
+            }
+
+            // Update wie aan de beurt is
+            if (data.server === "player1" && "{{ player }}" === data.player1) {
+                document.body.classList.add('active');
+            } else if (data.server === "player2" && "{{ player }}" === data.player2) {
+                document.body.classList.add('active');
+            } else {
+                document.body.classList.remove('active');
+            }
+        });
+
+        // Luister naar end-game gebeurtenis
+        socket.on('end_game', (data) => {
+            window.location.href = "/end_game";
+        });
+    </script>
+</body>
+</html>

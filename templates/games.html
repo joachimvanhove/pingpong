@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamegeschiedenis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Gamegeschiedenis</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Player 1</th>
+                    <th>Player 2</th>
+                    <th>Score 1</th>
+                    <th>Score 2</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game['player1'] }}</td>
+                    <td>{{ game['player2'] }}</td>
+                    <td>{{ game['score1'] }}</td>
+                    <td>{{ game['score2'] }}</td>
+                    <td>{{ game['timestamp'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn">Terug naar Dashboard</a>
+    </div>
+</body>
+</html>

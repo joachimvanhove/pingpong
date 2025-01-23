@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecteer {{ player }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .player-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            text-align: center;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .player-btn:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selecteer {{ player }}</h1>
+        <form method="POST">
+            {% for p in players %}
+            <button type="submit" name="player_name" value="{{ p['name'] }}" class="player-btn">
+                {{ p['name'] }}
+            </button>
+            {% endfor %}
+        </form>
+        <a href="/" class="btn">Terug naar Dashboard</a>
+    </div>
+</body>
+</html>

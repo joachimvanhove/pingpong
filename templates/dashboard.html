@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ping Pong Dashboard</h1>
+        <nav>
+          <a href="/live_score" class="btn">Live Score</a>
+          <a href="/leaderboard" class="btn">Leaderboard</a>
+            <a href="/players" class="btn">Spelerbeheer</a>
+            <a href="/games" class="btn">Gamegeschiedenis</a>
+            <a href="/player1" class="btn">Selecteer Player 1</a>
+            <a href="/player2" class="btn">Selecteer Player 2</a>
+        </nav>
+
+        <form method="POST" action="/reset_game">
+    <button type="submit" class="btn btn-danger">Reset Game</button>
+</form>
+    </div>
+</body>
+</html>

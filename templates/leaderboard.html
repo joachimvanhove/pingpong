@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Games Played</th>
+                    <th>Wins</th>
+                    <th>ELO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td>{{ player['player_name'] }}</td>
+                    <td>{{ player['games_played'] }}</td>
+                    <td>{{ player['wins'] }}</td>
+                    <td>{{ player['elo'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn">Terug naar Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Over!</h1>
+        <h2>Winnaar: {{ winner }}</h2>
+        <h3>Score: {{ winner_score }} - {{ loser_score }}</h3>
+        <p>Gefeliciteerd {{ winner }}! Je hebt de game gewonnen tegen {{ loser }}.</p>
+
+        <!-- Gamification -->
+        <div class="gamification">
+            <h3>Beloningen</h3>
+            <ul>
+                <li>Badge: 🏅 "Unstoppable"</li>
+                <li>Ranking: +50 punten</li>
+                <li>Special: "Highlight van de match toegevoegd!"</li>
+            </ul>
+        </div>
+
+        <!-- Nieuwe game starten -->
+        <a href="/" class="btn">Start een Nieuwe Game</a>
+    </div>
+</body>
+</html>
